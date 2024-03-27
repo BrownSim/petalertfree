@@ -14,7 +14,7 @@ class Department
     #[ORM\Column(name: 'id', type: Types::INTEGER)]
     private ?int $id = null;
 
-    #[ORM\Column(name: 'label', type: Types::INTEGER)]
+    #[ORM\Column(name: 'label', type: Types::STRING)]
     private ?string $label = null;
 
     public function getId(): ?int
