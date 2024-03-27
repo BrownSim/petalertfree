@@ -38,10 +38,10 @@ class Animal
     #[ORM\JoinColumn(name: 'city_id', referencedColumnName: 'id')]
     private ?City $city = null;
 
-    #[ORM\Column(name: 'label', type: Types::STRING)]
-    private ?string $label = null;
+    #[ORM\Column(name: 'name', type: Types::STRING)]
+    private ?string $name = null;
 
-    #[ORM\Column(name: 'description', type: Types::STRING)]
+    #[ORM\Column(name: 'description', type: Types::STRING, nullable: true)]
     private ?string $description = null;
 
     public function __construct()
@@ -123,14 +123,14 @@ class Animal
         return $this;
     }
 
-    public function getLabel(): ?string
+    public function getName(): ?string
     {
-        return $this->label;
+        return $this->name;
     }
 
-    public function setLabel(?string $label): self
+    public function setName(?string $name): self
     {
-        $this->label = $label;
+        $this->name = $name;
 
         return $this;
     }
