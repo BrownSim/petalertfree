@@ -1,0 +1,32 @@
+app_admin_animal:
+    resource: |
+        base_name: sherlockode_crud
+        resource_name: animal
+        except: [show]
+        vars: 
+            global:
+                icon: bi bi-person-fill
+    type: sherlockode_crud.resource
+    prefix: /admin
+
+app_admin_animal_type:
+    resource: |
+        base_name: sherlockode_crud
+        resource_name: animal_type
+        except: [show]
+        vars: 
+            global:
+                icon: bi bi-person-fill
+    type: sherlockode_crud.resource
+    prefix: /admin
+
+app_admin_breed:
+    resource: |
+        base_name: sherlockode_crud
+        resource_name: breed
+        except: [show]
+        vars: 
+            global:
+                icon: bi bi-person-fill
+    type: sherlockode_crud.resource
+    prefix: /admin

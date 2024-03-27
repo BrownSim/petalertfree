@@ -1,0 +1,51 @@
+sherlockode_crud:
+    crud:
+        animal:
+            config:
+                class: App\Entity\Animal
+                form: App\Form\Type\AnimalType
+            grid:
+                filters:
+                    name:
+                        type: string
+                fields:
+                    name:
+                        sortable: ~
+                actions:
+                    update: ~
+                    delete: ~
+                settings:
+                    page_size: 10
+        breed:
+            config:
+                class: App\Entity\Breed
+                form: App\Form\Type\BreedType
+            grid:
+                filters:
+                    label:
+                        type: string
+                fields:
+                    label:
+                        sortable: ~
+                actions:
+                    update: ~
+                    delete: ~
+                settings:
+                    page_size: 10
+
+        animal_type:
+            config:
+                class: App\Entity\AnimalType
+                form: App\Form\Type\AnimalTypeType
+            grid:
+                filters:
+                    label:
+                        type: string
+                fields:
+                    label:
+                        sortable: ~
+                actions:
+                    update: ~
+                    delete: ~
+                settings:
+                    page_size: 10
