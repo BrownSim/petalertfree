@@ -33,10 +33,10 @@ sherlockode_crud:
                 settings:
                     page_size: 10
 
-        animal_type:
+        species:
             config:
-                class: App\Entity\AnimalType
-                form: App\Form\Type\AnimalTypeType
+                class: App\Entity\Species
+                form: App\Form\Type\SpeciesType
             grid:
                 filters:
                     label:

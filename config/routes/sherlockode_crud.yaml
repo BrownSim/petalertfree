@@ -9,10 +9,10 @@ app_admin_animal:
     type: sherlockode_crud.resource
     prefix: /admin
 
-app_admin_animal_type:
+app_admin_species:
     resource: |
         base_name: sherlockode_crud
-        resource_name: animal_type
+        resource_name: species
         except: [show]
         vars: 
             global:

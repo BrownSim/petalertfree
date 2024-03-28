@@ -22,9 +22,9 @@ class Animal
     #[ORM\OneToMany(targetEntity: AnimalPicture::class, mappedBy: 'animal' ,cascade: ['persist'], orphanRemoval: true)]
     private Collection $pictures;
 
-    #[ORM\OneToOne(targetEntity: AnimalType::class)]
-    #[ORM\JoinColumn(name: 'animal_type_id', referencedColumnName: 'id')]
-    private ?AnimalType $animalType = null;
+    #[ORM\OneToOne(targetEntity: Species::class)]
+    #[ORM\JoinColumn(name: 'species_id', referencedColumnName: 'id')]
+    private ?Species $species = null;
 
     #[ORM\OneToOne(targetEntity: Breed::class)]
     #[ORM\JoinColumn(name: 'breed_id', referencedColumnName: 'id')]
@@ -75,14 +75,14 @@ class Animal
         return $this;
     }
 
-    public function getAnimalType(): ?AnimalType
+    public function getSpecies(): ?Species
     {
-        return $this->animalType;
+        return $this->species;
     }
 
-    public function setAnimalType(?AnimalType $animalType): self
+    public function setSpecies(?Species $species): self
     {
-        $this->animalType = $animalType;
+        $this->species = $species;
 
         return $this;
     }
