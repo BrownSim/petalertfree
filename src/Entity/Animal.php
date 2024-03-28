@@ -38,6 +38,9 @@ class Animal
     #[ORM\JoinColumn(name: 'city_id', referencedColumnName: 'id')]
     private ?City $city = null;
 
+    #[ORM\Column(name: 'hybrid', type: Types::BOOLEAN)]
+    private bool $hybrid = false;
+
     #[ORM\Column(name: 'name', type: Types::STRING)]
     private ?string $name = null;
 
@@ -119,6 +122,18 @@ class Animal
     public function setCity(?City $city): self
     {
         $this->city = $city;
+
+        return $this;
+    }
+
+    public function isHybrid(): bool
+    {
+        return $this->hybrid;
+    }
+
+    public function setHybrid(bool $hybrid): self
+    {
+        $this->hybrid = $hybrid;
 
         return $this;
     }
