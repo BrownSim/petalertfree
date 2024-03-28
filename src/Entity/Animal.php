@@ -11,6 +11,24 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Table(name: 'animal')]
 class Animal
 {
+    public const GENDER_MALE = 10;
+    public const GENDER_FEMALE = 20;
+
+    public const SILHOUETTE_THIN = 10;
+    public const SILHOUETTE_NORMAL = 20;
+    public const SILHOUETTE_PLUMP = 30;
+
+    public const SIZE_SMALL = 10;
+    public const SIZE_NORMAL = 20;
+    public const SIZE_TALL = 30;
+
+    public const FUR_SHORT = 10;
+    public const FUR_MID_LENGTH = 20;
+    public const FUR_LONG = 30;
+    public const FUR_HARD = 40;
+    public const FUR_CURLY = 50;
+    public const FUR_WITHOUT = 60;
+
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'AUTO')]
     #[ORM\Column(name: 'id', type: Types::INTEGER)]
@@ -38,14 +56,43 @@ class Animal
     #[ORM\JoinColumn(name: 'city_id', referencedColumnName: 'id')]
     private ?City $city = null;
 
-    #[ORM\Column(name: 'hybrid', type: Types::BOOLEAN)]
-    private bool $hybrid = false;
+    #[ORM\ManyToOne(targetEntity: Contact::class)]
+    #[ORM\JoinColumn(name: 'contact_id', referencedColumnName: 'id')]
+    private ?Contact $contact = null;
+
+    #[ORM\Column(name: 'hybrid', type: Types::BOOLEAN, nullable: true)]
+    private ?bool $hybrid;
+
+    #[ORM\Column(name: 'castrated', type: Types::BOOLEAN, nullable: true)]
+    private ?bool $castrated;
+
+    #[ORM\Column(name: 'chipped', type: Types::BOOLEAN, nullable: true)]
+    private ?bool $chipped;
+
+    #[ORM\Column(name: 'tattoo', type: Types::BOOLEAN, nullable: true)]
+    private ?bool $tattoo;
+
+    #[ORM\Column(name: 'collar', type: Types::BOOLEAN, nullable: true)]
+    private ?bool $collar;
+
+    #[ORM\Column(name: 'silhouette', type: Types::INTEGER, nullable: true)]
+    private ?int $silhouette;
+
+    #[ORM\Column(name: 'size', type: Types::INTEGER, nullable: true)]
+    private ?int $size;
+
+    #[ORM\Column(name: 'fur_type', type: Types::INTEGER, nullable: true)]
+    private ?int $furType;
 
     #[ORM\Column(name: 'name', type: Types::STRING)]
     private ?string $name = null;
 
     #[ORM\Column(name: 'description', type: Types::STRING, nullable: true)]
     private ?string $description = null;
+
+    #[ORM\Column(name: 'lost_date', type: Types::DATE_IMMUTABLE, nullable: true)]
+    private ?\DateTimeImmutable $lostDate = null;
+
 
     public function __construct()
     {
@@ -126,14 +173,110 @@ class Animal
         return $this;
     }
 
-    public function isHybrid(): bool
+    public function getContact(): ?Contact
+    {
+        return $this->contact;
+    }
+
+    public function setContact(?Contact $contact): self
+    {
+        $this->contact = $contact;
+
+        return $this;
+    }
+
+    public function getHybrid(): ?bool
     {
         return $this->hybrid;
     }
 
-    public function setHybrid(bool $hybrid): self
+    public function setHybrid(?bool $hybrid): self
     {
         $this->hybrid = $hybrid;
+
+        return $this;
+    }
+
+    public function getCastrated(): ?bool
+    {
+        return $this->castrated;
+    }
+
+    public function setCastrated(?bool $castrated): self
+    {
+        $this->castrated = $castrated;
+
+        return $this;
+    }
+
+    public function getChipped(): ?bool
+    {
+        return $this->chipped;
+    }
+
+    public function setChipped(?bool $chipped): self
+    {
+        $this->chipped = $chipped;
+
+        return $this;
+    }
+
+    public function getTattoo(): ?bool
+    {
+        return $this->tattoo;
+    }
+
+    public function setTattoo(?bool $tattoo): self
+    {
+        $this->tattoo = $tattoo;
+
+        return $this;
+    }
+
+    public function getCollar(): ?bool
+    {
+        return $this->collar;
+    }
+
+    public function setCollar(?bool $collar): self
+    {
+        $this->collar = $collar;
+
+        return $this;
+    }
+
+    public function getSilhouette(): ?int
+    {
+        return $this->silhouette;
+    }
+
+    public function setSilhouette(?int $silhouette): self
+    {
+        $this->silhouette = $silhouette;
+
+        return $this;
+    }
+
+    public function getSize(): ?int
+    {
+        return $this->size;
+    }
+
+    public function setSize(?int $size): self
+    {
+        $this->size = $size;
+
+        return $this;
+    }
+
+    public function getFurType(): ?int
+    {
+        return $this->furType;
+    }
+
+    public function setFurType(?int $furType): self
+    {
+        $this->furType = $furType;
 
         return $this;
     }
@@ -158,6 +301,18 @@ class Animal
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getLostDate(): ?\DateTimeImmutable
+    {
+        return $this->lostDate;
+    }
+
+    public function setLostDate(?\DateTimeImmutable $lostDate): self
+    {
+        $this->lostDate = $lostDate;
 
         return $this;
     }
