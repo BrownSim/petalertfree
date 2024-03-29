@@ -29,6 +29,11 @@ class Animal
     public const FUR_CURLY = 50;
     public const FUR_WITHOUT = 60;
 
+    public const ALERT_TYPE_LOST = 10;
+    public const ALERT_TYPE_FOUND = 20;
+    public const ALERT_TYPE_SEEN = 30;
+    public const ALERT_TYPE_STOLEN = 40;
+
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'AUTO')]
     #[ORM\Column(name: 'id', type: Types::INTEGER)]
@@ -60,6 +65,9 @@ class Animal
     #[ORM\JoinColumn(name: 'contact_id', referencedColumnName: 'id')]
     private ?Contact $contact = null;
 
+    #[ORM\Column(name: 'dead', type: Types::BOOLEAN)]
+    private bool $dead = false;
+
     #[ORM\Column(name: 'hybrid', type: Types::BOOLEAN, nullable: true)]
     private ?bool $hybrid;
 
@@ -83,6 +91,9 @@ class Animal
 
     #[ORM\Column(name: 'fur_type', type: Types::INTEGER, nullable: true)]
     private ?int $furType;
+
+    #[ORM\Column(name: 'alert_type', type: Types::SMALLINT, nullable: true)]
+    private ?int $alertType = null;
 
     #[ORM\Column(name: 'name', type: Types::STRING)]
     private ?string $name = null;
@@ -185,6 +196,18 @@ class Animal
         return $this;
     }
 
+    public function isDead(): bool
+    {
+        return $this->dead;
+    }
+
+    public function setDead(bool $dead): self
+    {
+        $this->dead = $dead;
+
+        return $this;
+    }
+
     public function getHybrid(): ?bool
     {
         return $this->hybrid;
@@ -277,6 +300,18 @@ class Animal
     public function setFurType(?int $furType): self
     {
         $this->furType = $furType;
+
+        return $this;
+    }
+
+    public function getAlertType(): ?int
+    {
+        return $this->alertType;
+    }
+
+    public function setAlertType(?int $alertType): self
+    {
+        $this->alertType = $alertType;
 
         return $this;
     }
