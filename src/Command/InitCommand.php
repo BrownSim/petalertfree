@@ -26,6 +26,7 @@ class InitCommand extends Command
 
         $this->initCat();
         $this->initDog();
+        $this->initSpecies();
 
         $this->em->flush();
 
@@ -460,6 +461,63 @@ class InitCommand extends Command
 
         foreach ($breeds as $breedLabel) {
             $species->addBreed((new Breed())->setLabel($breedLabel));
+        }
+    }
+
+    public function initSpecies(): void
+    {
+        $listSpecies = [
+            'Agneau',
+            'Ane',
+            'Araignée',
+            'Bouc',
+            'Brebis',
+            'Canard',
+            'Capucin',
+            'Cheval',
+            'Chevreuil',
+            'Chinchilla',
+            'Chèvre',
+            'Cochon',
+            'Cochon D’Inde',
+            'Colombe',
+            'Coq',
+            'Dinde',
+            'Ecureuil',
+            'Faisan',
+            'Fennec',
+            'Furet',
+            'Hamster',
+            'Iguane',
+            'Kangourou',
+            'Lama',
+            'Lapin',
+            'Lézard',
+            'Mouton',
+            'Mulet',
+            'Mygale',
+            'Oie',
+            'Oiseau',
+            'Paon',
+            'Perroquet',
+            'Perruche',
+            'Pigeon',
+            'Pogona',
+            'Poney',
+            'Poule',
+            'Rat',
+            'Reptile',
+            'Serpent',
+            'Souris',
+            'Taureau',
+            'Tortue',
+            'Vache',
+            'Wallaby',
+        ];
+
+        foreach ($listSpecies as $speciesLabel) {
+            $species = (new Species())->setLabel($speciesLabel);
+            $this->em->persist($species);
         }
     }
 }
