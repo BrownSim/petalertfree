@@ -83,13 +83,13 @@ class Animal
     #[ORM\Column(name: 'collar', type: Types::BOOLEAN, nullable: true)]
     private ?bool $collar;
 
-    #[ORM\Column(name: 'silhouette', type: Types::INTEGER, nullable: true)]
+    #[ORM\Column(name: 'silhouette', type: Types::SMALLINT, nullable: true)]
     private ?int $silhouette;
 
-    #[ORM\Column(name: 'size', type: Types::INTEGER, nullable: true)]
+    #[ORM\Column(name: 'size', type: Types::SMALLINT, nullable: true)]
     private ?int $size;
 
-    #[ORM\Column(name: 'fur_type', type: Types::INTEGER, nullable: true)]
+    #[ORM\Column(name: 'fur_type', type: Types::SMALLINT, nullable: true)]
     private ?int $furType;
 
     #[ORM\Column(name: 'alert_type', type: Types::SMALLINT, nullable: true)]
