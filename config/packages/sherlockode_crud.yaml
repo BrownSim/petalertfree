@@ -15,7 +15,7 @@ sherlockode_crud:
                     update: ~
                     delete: ~
                 settings:
-                    page_size: 10
+                    page_size: 20
         breed:
             config:
                 class: App\Entity\Breed
@@ -31,7 +31,7 @@ sherlockode_crud:
                     update: ~
                     delete: ~
                 settings:
-                    page_size: 10
+                    page_size: 20
 
         species:
             config:
@@ -48,4 +48,4 @@ sherlockode_crud:
                     update: ~
                     delete: ~
                 settings:
-                    page_size: 10
+                    page_size: 20

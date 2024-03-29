@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'species')]
@@ -24,6 +25,10 @@ class Species
 
     #[ORM\Column(name: 'label', type: Types::STRING)]
     private ?string $label = null;
+
+    #[ORM\Column(name: 'slug', unique: true, type: Types::STRING)]
+    #[Gedmo\Slug(fields: ['label'])]
+    private ?string $slug = null;
 
     public function __construct()
     {
